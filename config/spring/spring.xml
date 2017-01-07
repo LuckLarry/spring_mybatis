@@ -23,10 +23,10 @@
 
 <!-- MyBatis 分页拦截器-->
 <!-- 拦截Mapper.xml文件中，id包含query字符的语句 --> 
-<bean id="paginationInterceptor" class="cn.itcast.ssm.interceptor.PageInterceptor1">
+<!-- <bean id="paginationInterceptor" class="cn.itcast.ssm.interceptor.MyPageInterceptor">
 	<property name="dialect" value="mysql"/> 
 	<property name="pageSqlId" value=".*Page$"/>
-</bean> 
+</bean>  -->
 
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 	<property name="driverClassName" value="${jdbc.driver}" />

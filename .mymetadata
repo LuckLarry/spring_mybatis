@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="spring_mybatis1"
+  name="spring_mybatis"
   id="myeclipse.1483519693225"
-  context-root="/spring_mybatis1"
+  context-root="/spring_mybatis"
   j2ee-spec="5.0"
-  archive="spring_mybatis1.war">
+  archive="spring_mybatis.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

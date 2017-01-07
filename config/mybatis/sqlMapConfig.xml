@@ -19,9 +19,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- <mappers>
 	
 	</mappers> -->
-	<!--  <plugins>
-        <plugin interceptor="cn.itcast.ssm.interceptor.PageInterceptor" />
-    </plugins>-->
+	<plugins>
+        <!--<plugin interceptor="cn.itcast.ssm.interceptor.MyPageInterceptor" />-->
+        <plugin interceptor="cn.itcast.ssm.interceptor.MyPageInterceptor" />
+    </plugins>
     
     <!-- <properties>
 	    <property name="dialect" value="mysql" />  

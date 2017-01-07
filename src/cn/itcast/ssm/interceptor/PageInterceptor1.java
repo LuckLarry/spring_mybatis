@@ -39,7 +39,7 @@ import cn.itcast.utils.ReflectHelper;
 public class PageInterceptor1 implements Interceptor {
 	private String dialect = ""; //数据库方言  
     private String pageSqlId = ""; //mapper.xml中需要拦截的ID(正则匹配)  
-      
+
     public Object intercept(Invocation invocation) throws Throwable {
 /*
 对于StatementHandler其实只有两个实现类，一个是RoutingStatementHandler，另一个是抽象类BaseStatementHandler，  

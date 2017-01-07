@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.itcast.ssm.po.ItemsCustom;
 import cn.itcast.ssm.po.ItemsQueryVo;
 import cn.itcast.ssm.service.ItemsService;
+import cn.itcast.utils.Page;
 
 @Controller
 public class ItemsController {
@@ -32,9 +33,13 @@ public class ItemsController {
 		ItemsCustom custom = new ItemsCustom();
 		custom.setName(name);
 		vo.setItemsCustom(custom);
-		List<ItemsCustom> itemList = itemsService.findItemsList(vo);
+		Page page = new Page();
+		page.setPage(1);
+		page.setRows(2);
+		List<ItemsCustom> itemList = itemsService.findItemsListPage(page);
+//		List<ItemsCustom> itemList = itemsService.findItemsList(vo);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("itemsList",itemList);
+//		modelAndView.addObject("itemsList",itemList);
 		modelAndView.setViewName("items/itemsList");
 //		StatementHandler a;
 //		MetaObject.forObject(object, objectFactory, objectWrapperFactory)
