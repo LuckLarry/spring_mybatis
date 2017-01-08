@@ -22,7 +22,6 @@ public class ItemsServiceImpl implements ItemsService{
 		return list;
 	}
 
-	@Override
 	public List<ItemsCustom> findItemsListPage(Page page) throws Exception {
 		return itemsMapperCustom.findItemsListPage(page);
 	}

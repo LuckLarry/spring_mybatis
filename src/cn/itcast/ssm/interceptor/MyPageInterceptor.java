@@ -38,6 +38,7 @@ public class MyPageInterceptor implements Interceptor{
 			if(obj instanceof Page){
 				Page page = (Page) obj;
 				MappedStatement mappedStatement = (MappedStatement) ReflectHelper.getFieldValue(delegate, "mappedStatement");
+//				mappedStatement.getId().matches("");配置符合分页id
 				Connection connection =  (Connection) invocation.getArgs()[0];
 				String sql = boundSql.getSql();
 				this.setTotalRecord(page,connection,mappedStatement);
@@ -52,7 +53,13 @@ public class MyPageInterceptor implements Interceptor{
 	
 	private String getPageSql(Page page, String sql) {
 		StringBuffer sqlBuffer = new StringBuffer(sql);
-		int offset = (page.getPage() - 1) * page.getRows();  
+		int offset = 0;
+		int pageCount = page.getTotalRecord()/page.getRows();
+		pageCount = page.getTotalRecord()%page.getRows()==0?pageCount:pageCount+1;
+		if(page.getPage()>=1)
+			offset = (page.getPage() - 1) * page.getRows();  
+		if(page.getPage()>pageCount)
+			offset = (pageCount==0?0:(pageCount-1)) * page.getRows();  
 		sqlBuffer.append(" limit ").append(offset).append(",").append(page.getRows());  
 		return sqlBuffer.toString(); 
 	}
@@ -70,6 +77,7 @@ public class MyPageInterceptor implements Interceptor{
 			ResultSet resultSet = statement.executeQuery();
 			if(resultSet.next()){
 				int totalRecord = resultSet.getInt(1);
+				page.setTotalRecord(totalRecord);
 				System.out.println(totalRecord);
 			}
 		} catch (SQLException e) {

@@ -1,6 +1,8 @@
 package cn.itcast.ssm.po;
 
-public class ItemsQueryVo {
+import cn.itcast.utils.Page;
+
+public class ItemsQueryVo extends Page{
 	
 	private Items items;
 	private ItemsCustom itemsCustom;
